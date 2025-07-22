@@ -31,9 +31,14 @@ public class WordStatistics {
             wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
         }
 
+        int totalWords = words.size();
+
         System.out.println("Статистика по словам:");
         for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+            String word = entry.getKey();
+            int count = entry.getValue();
+            double percentage = (count * 100.0) / totalWords;
+            System.out.printf("%s: %d (%.2f%%)%n", word, count, percentage);
         }
 
         int maxCount = Collections.max(wordCount.values());
